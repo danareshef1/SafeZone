@@ -3,54 +3,40 @@
  * https://github.com/facebook/react-native
  *
  * @format
+ * @flow strict-local
  */
 
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import Home from './Home';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  Linking,
+} from 'react-native';
 
-const Drawer = createDrawerNavigator();
-
-function App() {
+const App = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        drawerPosition="left"
-        drawerType="front"
-        edgeWidth={100}
-        hideStatusBar={false}
-        overlayColor="rgba(0,0,0,0.7)"
-          drawerStyle={{
-          backgroundColor: '#c6cbef',
-          width: 240,
-        }}
-        screenOptions={{
-          headerShown: true,
-          swipeEnabled: true,
-          gestureEnabled: true,
-          headerTitleAlign: 'center',
-          headerStyle: {
-            backgroundColor: '#c6cbef',
-          },
-          headerTintColor: '#000',
-          headerTitleStyle: {
-            fontSize: 24,
-            fontWeight: 'bold',
-          },
-        }}
-        >
-          <Drawer.Screen
-            name="Home"
-            component={Home}
-            options={{
-              title: 'Home',
-            }}
-          />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <View style={styles.body}>
+      <Text style={styles.text}>Programming with Mash</Text>
+      <Button title='youtube channel' onPress={()=>{Linking.openURL('https://youtube.com/programmingwithmash')}}></Button>
+    </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  body: {
+    flex: 1,
+    backgroundColor: '#0000ff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    color: '#ffffff',
+    fontSize: 20,
+    fontStyle:'italic',
+    margin: 10,
+  },
+});
 
 export default App;
